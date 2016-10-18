@@ -1,0 +1,35 @@
+<div class="formList">
+
+  <div class="formList-title">
+    Form Library
+    <div class="formList-create" ng-click="formList.startAddingForm()">
+      <span tooltips
+            tooltip-template="Create form type"
+            tooltip-side="bottom">
+        +
+      </span>
+    </div>
+  </div>
+
+  <ul class="formList-list">
+    <li ng-repeat="form in formList.forms"
+        ng-click="formList.selectForm(form)"
+        ng-class="formList.isFormSelected(form) ? 'formList-activeItem' : ''">
+      <div class="formList-delete"
+           ng-click="formList.deleteForm(form); $event.stopPropagation()">
+        <span tooltips tooltip-template="Delete form type" tooltip-side="right">
+          x
+        </span>
+      </div>
+      {{ form.name }}
+    </li>
+    <li ng-show="formList.showNew" class="formList-new">
+      <input type="text"
+             ng-model="formList.newFormName"
+             ng-enter="formList.addForm()"
+             focus-hack="NewFormInput"
+             placeholder="Untitled">
+    </li>
+  </ul>
+
+</div>

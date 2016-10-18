@@ -1,0 +1,229 @@
+html {
+  height: 100%;
+}
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+/* Form list. */
+form-list {
+  width: 200px;
+}
+.formList {
+  height: 100%;
+  border: 1px solid rgb(180, 180, 180);
+  padding: 20px 0;
+  background: rgb(235, 240, 243);
+}
+.formList-title {
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(160, 160, 160);
+}
+.formList-create {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 17px;
+  float: right;
+  border: 1px solid rgb(160, 160, 160);
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+.formList-create:hover {
+  background: rgb(120, 120, 120);
+  color: white;
+  border-color: white;
+}
+.formList-delete {
+  opacity: 0;
+  position: absolute;
+  left: 18px;
+  color: white;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  transition: all 200ms ease;
+}
+.formList-delete:hover {
+  color: red;
+}
+.formList-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: rgb(120, 120, 120);
+}
+.formList-list li {
+  position: relative;
+  padding: 8px 20px 8px 50px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+.formList-list li.formList-activeItem {
+  background: rgba(0, 0, 0, 0.15);
+}
+.formList-list li:not(.formList-new):hover {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+.formList-list li:not(.formList-new):hover .formList-delete {
+  opacity: 1;
+}
+.formList-new input {
+  border: none;
+  background: transparent;
+  font-size: inherit;
+}
+.formList-new input:focus {
+  outline: none;
+}
+
+/* Form view. */
+form-view {
+  flex: 2;
+}
+.formView {
+  height: 100%;
+  border: 1px solid rgb(180, 180, 180);
+  background: rgb(245, 245, 249);
+  padding: 20px;
+  border-left: 0;
+}
+.formView-title {
+  padding: 8px 0 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(160, 160, 160);
+}
+.formView-title span {
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  padding: 0 1px;
+  transition: all 200ms ease;
+}
+.formView-title span:hover {
+  color: rgb(120, 120, 120);
+  border-color: rgb(120, 120, 120);
+}
+.formView-title span:not(:last-of-type) {
+  margin-right: 20px;
+}
+.formView-title span.formView-activeTab {
+  color: rgb(100, 100, 100);
+  border-color: rgb(100, 100, 100);
+}
+.formView-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.formView-table th {
+  padding: 3px 0;
+  font-size: 14px;
+  color: rgb(120, 120, 120);
+  border: 1px solid grey;
+}
+.formView-table td {
+  border: 1px solid grey;
+}
+.formView-table input {
+  width: calc(100% - 6px);
+}
+.formView-subtitle {
+  padding: 3px 20px;
+  background: rgb(90, 90, 90);
+  color: white;
+  font-size: 14px;
+}
+.formView-preview {
+  border: 1px solid grey;
+  padding: 10px;
+  background: white;
+  font-size: 12px;
+  white-space: pre;
+}
+.formView-submit {
+  margin: 20px 0;
+  background: transparent;
+  border: 1px solid rgb(120, 120, 120);
+  border-radius: 2px;
+  padding: 0 20px;
+  line-height: 26px;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.08) inset;
+  transition: all 200ms ease;
+}
+.formView-submit:hover {
+  background: rgb(120, 120, 120);
+  color: white;
+}
+.formView-itemList {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+.formView-itemList li {
+  position: relative;
+  border-bottom-width: 0;
+}
+.formView-itemList li:first-of-type {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.formView-itemList li:last-of-type {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-width: 1px;
+}
+.formView-deleteItem {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  color: rgb(160, 160, 160);
+  width: 18px;
+  height: 18px;
+  line-height: 17px;
+  border: 1px solid rgb(160, 160, 160);
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 200ms ease;
+  font-size: 16px;
+  font-weight: bold;
+}
+.formView-deleteItem:hover {
+  color: red;
+  border-color: red;
+}
+
+/* Utility classes. */
+.u-roundedTop {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.u-roundedBottom {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+/* Tooltip style overrides. */
+tooltip tip-tip {
+  font-size: 12px;
+  font-weight: normal;
+}

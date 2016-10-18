@@ -1,0 +1,75 @@
+<div class="formView">
+
+  <div ng-if="formView.sharedState.selectedForm">
+
+    <div class="formView-title">
+      <span ng-class="formView.sharedState.selectedTab === 'insert' ? 'formView-activeTab' : ''"
+            ng-click="formView.sharedState.selectedTab = 'insert'">
+        Insert {{ formView.sharedState.selectedForm.name | withArticle }}
+      </span>
+      <span ng-class="formView.sharedState.selectedTab === 'view' ? 'formView-activeTab' : ''"
+            ng-click="formView.updateSelectedType(); formView.sharedState.selectedTab = 'view'">
+        View {{ formView.sharedState.selectedForm.name | pluralize }}
+      </span>
+    </div>
+
+    <div ng-if="formView.sharedState.selectedTab === 'insert'">
+      <div class="formView-subtitle u-roundedTop">Form Entry</div>
+      <form class="formView-form" ng-submit="formView.submit()">
+        <table class="formView-table">
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+          <tr ng-repeat="row in formView.formData track by $index">
+            <td><input type="text" ng-model="row.key"></td>
+            <td><input type="text" ng-model="row.value"></td>
+          </tr>
+          <tr>
+            <td><input type="text"
+                       ng-model="formView.newKey"
+                       ng-change="formView.addRow()"
+                       placeholder="New key"></td>
+            <td><input type="text"
+                       ng-model="formView.newValue"
+                       ng-change="formView.addRow()"
+                       placeholder="New value"></td>
+          </tr>
+        </table>
+      </form>
+
+      <div class="formView-subtitle">Document Preview</div>
+      <div class="formView-preview u-roundedBottom">
+        {{ formView.formData | formToJson | formatJson }}
+      </div>
+
+      <button type="button" class="formView-submit" ng-click="formView.submit()">
+        Submit
+      </button>
+    </div>
+
+    <div ng-if="formView.sharedState.selectedTab === 'view'">
+      <ul class="formView-itemList">
+        <li ng-repeat="document in formView.documents track by $index"
+             class="formView-preview">
+          <div class="formView-deleteItem"
+               ng-click="formView.deleteDocument(document)">
+            <span tooltips
+                  tooltip-template="Delete {{ formView.sharedState.selectedForm.name }}"
+                  tooltip-side="left">x</span>
+          </div>
+          {{ document | formatJson }}
+        </li>
+      </ul>
+      <div ng-if="!formView.documents.length">
+        No {{ formView.sharedState.selectedForm.name | pluralize }} have been created.
+      </div>
+    </div>
+
+  </div>
+
+  <div ng-if="!formView.sharedState.selectedForm" class="formView-title">
+    No form selected.
+  </div>
+
+</div>
